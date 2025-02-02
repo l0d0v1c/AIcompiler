@@ -18,6 +18,7 @@ Le langage **Ἑλληνικός** utilise quelques mots-clés essentiels :
 - **γράφε**  
   Affiche du texte ou une valeur (équivalent de `printf` en C).
 
+
 La structure générale d’un programme est la suivante :
 
 ```plaintext
