@@ -24,7 +24,7 @@ La structure générale d’un programme est la suivante :
 ```plaintext
 ἄρχισον
     ... instructions ...
-τελος
+τελος```
 
 Les instructions se terminent par un point-virgule ;.
 
