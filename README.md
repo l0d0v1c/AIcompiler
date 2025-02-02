@@ -24,34 +24,40 @@ La structure générale d’un programme est la suivante :
 ἄρχισον
     ... instructions ...
 τελος
-
+```
 Les instructions se terminent par un point-virgule ;.
 
-Exemple Hello World
+# Exemple Hello World
 
 Voici un exemple minimal de programme “Hello World” écrit en Ἑλληνικός :
 
+```
 ἄρχισον
     γράφε("Hello World!");
 τελος
+```
+
 
 Ce programme démarre avec ἄρχισον, affiche le texte "Hello World!" grâce à la commande γράφε, puis se termine avec τελος.
 
-Compilation du Langage
+# Compilation du Langage
 
 Un compilateur (ou transpileur) en C est fourni dans ce projet. Ce compilateur réalise les opérations suivantes :
-	1.	Il lit un fichier source écrit en Ἑλληνικός.
-	2.	Il génère un fichier source C (output.c) équivalent.
-	3.	Il appelle gcc pour compiler ce fichier C et produire un exécutable.
 
-Étapes pour Compiler et Exécuter un Programme en Ἑλληνικός
-	1.	Compiler le compilateur :
+1.	Il lit un fichier source écrit en Ἑλληνικός.
+2.	Il génère un fichier source C (output.c) équivalent.
+3.	Il appelle gcc pour compiler ce fichier C et produire un exécutable.
+
+## Étapes pour Compiler et Exécuter un Programme en Ἑλληνικός
+
+1.	Compiler le compilateur :
+
 Compilez le fichier source du compilateur (par exemple compiler.c) avec gcc :
 
 gcc -o compiler compiler.c
 
 
-	2.	Créer un fichier source en Ἑλληνικός :
+2.	Créer un fichier source en Ἑλληνικός :
 Créez un fichier (par exemple programme.txt) contenant le code source. Pour tester avec le Hello World, écrivez :
 
 ἄρχισον
@@ -59,14 +65,16 @@ Créez un fichier (par exemple programme.txt) contenant le code source. Pour tes
 τελος
 
 
-	3.	Exécuter le compilateur :
+3.	Exécuter le compilateur :
+
 Lancez le compilateur en lui passant le fichier source en argument :
 
 ./compiler programme.txt
 
 Le compilateur générera un fichier output.c puis appellera gcc pour créer l’exécutable output.
 
-	4.	Exécuter le programme généré :
+4.	Exécuter le programme généré :
+5. 
 Exécutez l’exécutable obtenu :
 
 ./output
@@ -77,7 +85,7 @@ Hello World!
 
 
 
-Conclusion
+# Conclusion
 
 Ce projet est une démonstration ludique de la création d’un langage de programmation inspiré du grec ancien et de la réalisation d’un compilateur minimaliste qui traduit ce langage en C. Vous pouvez étendre ce système pour ajouter d’autres constructions (boucles, conditions, expressions complexes, etc.) et ainsi explorer la conception de langages et de compilateurs de manière créative.
 
