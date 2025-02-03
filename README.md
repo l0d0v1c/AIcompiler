@@ -1,6 +1,8 @@
-# Langage Ἑλληνικός
 
-Ce projet présente **Ἑλληνικός**, un langage de programmation fictif et minimaliste inspiré du grec ancien. L’objectif est de proposer une syntaxe originale et ludique en utilisant des mots grecs antiques, tout en démontrant comment construire un compilateur (ou transpileur) qui traduit ce langage en code C.
+
+# Langage Ἑλληνικός - Projet o3-mini-high
+
+Ce projet présente **Ἑλληνικός**, un langage de programmation fictif et minimaliste inspiré du grec ancien. Ce code est généré par **o3-mini-high** et se trouve dans le fichier **assembler.c**. Ce compilateur minimaliste traduit directement un programme écrit en Ἑλληνικός en assembleur ARM64 pour Apple Silicon, sans passer par une traduction intermédiaire en C.
 
 ## Caractéristiques du Langage
 
@@ -12,80 +14,75 @@ Le langage **Ἑλληνικός** utilise quelques mots-clés essentiels :
 - **τελος**  
   Termine un programme ou un bloc de code.
 
-- **μεταβλητὴ**  
-  Permet de déclarer une variable (équivalent de `int` en C).
-
 - **γράφε**  
-  Affiche du texte ou une valeur (équivalent de `printf` en C).
+  Affiche du texte (seulement la version avec une chaîne littérale est supportée dans cet exemple).
 
-La structure générale d’un programme est la suivante :
+La structure générale d’un programme en Ἑλληνικός est la suivante :
 
-```plaintext
-ἄρχισον
-    ... instructions ...
-τελος
-```
-Les instructions se terminent par un point-virgule ;.
+    ἄρχισον
+        ... instructions ...
+    τελος
 
-# Exemple Hello World
+Les instructions se terminent par un point-virgule `;`.
 
-Voici un exemple minimal de programme “Hello World” écrit en Ἑλληνικός :
+## Exemple Hello World
 
-```
-ἄρχισον
-    γράφε("Hello World!");
-τελος
-```
+Voici un exemple minimal de programme "Hello World" écrit en **Ἑλληνικός** :
 
+    ἄρχισον
+        γράφε("Hello World!");
+    τελος
 
-Ce programme démarre avec ἄρχισον, affiche le texte "Hello World!" grâce à la commande γράφε, puis se termine avec τελος.
+Ce programme démarre avec `ἄρχισον`, affiche le texte `"Hello World!"` via la commande `γράφε`, puis se termine avec `τελος`.
 
-# Compilation du Langage
+## Compilation et Génération de l'Exécutable
 
-Un compilateur (ou transpileur) en C est fourni dans ce projet. Ce compilateur réalise les opérations suivantes :
+Le fichier **assembler.c** (généré par **o3-mini-high**) est un compilateur minimaliste écrit en C qui procède comme suit :
 
-1.	Il lit un fichier source écrit en Ἑλληνικός.
-2.	Il génère un fichier source C (output.c) équivalent.
-3.	Il appelle gcc pour compiler ce fichier C et produire un exécutable.
+1. Il lit un fichier source écrit en **Ἑλληνικός**.
+2. Il génère directement du code assembleur ARM64 (dans le fichier `output.s`).
+3. Il invoque Clang avec l'option `-arch arm64` pour assembler et lier le code en un exécutable natif pour Apple Silicon.
 
-## Étapes pour Compiler et Exécuter un Programme en Ἑλληνικός
+### Étapes pour Compiler et Exécuter un Programme en Ἑλληνικός
 
-1.	Compiler le compilateur :
+1. **Compiler le compilateur (assembler.c) :**
 
-Compilez le fichier source du compilateur (par exemple compiler.c) avec gcc :
+   Sur votre Apple Silicon, compilez le fichier **assembler.c** avec la commande suivante :
 
-gcc -o compiler compiler.c
+       gcc -o assembler assembler.c
 
+   ou avec Clang :
 
-2.	Créer un fichier source en Ἑλληνικός :
-Créez un fichier (par exemple programme.txt) contenant le code source. Pour tester avec le Hello World, écrivez :
+       clang -o assembler assembler.c
 
-ἄρχισον
-    γράφε("Hello World!");
-τελος
+2. **Créer un fichier source en Ἑλληνικός :**
 
+   Créez un fichier (par exemple `programme.txt`) contenant le code source. Pour tester avec Hello World, utilisez :
 
-3.	Exécuter le compilateur :
+       ```
+       ἄρχισον
+           γράφε("Hello World!");
+       τελος
+       ```
+`
+3. **Exécuter le compilateur :**
 
-Lancez le compilateur en lui passant le fichier source en argument :
+   Lancez le compilateur en passant le fichier source en argument :
 
-./compiler programme.txt
+       ./assembler programme.txt
 
-Le compilateur générera un fichier output.c puis appellera gcc pour créer l’exécutable output.
+   Le compilateur générera un fichier `output.s` (assembleur ARM64) et appellera Clang pour produire un exécutable nommé `output`.
 
-4.	Exécuter le programme généré :
-5. 
-Exécutez l’exécutable obtenu :
+4. **Exécuter l'exécutable généré :**
 
-./output
+   Lancez l’exécutable :
 
-Vous devriez alors voir s’afficher :
+       ./output
 
-Hello World!
+   Vous devriez voir s'afficher :
 
+       Hello World!
 
+## Conclusion
 
-# Conclusion
-
-Ce projet est une démonstration ludique de la création d’un langage de programmation inspiré du grec ancien et de la réalisation d’un compilateur minimaliste qui traduit ce langage en C. Vous pouvez étendre ce système pour ajouter d’autres constructions (boucles, conditions, expressions complexes, etc.) et ainsi explorer la conception de langages et de compilateurs de manière créative.
-
+Ce projet, généré par **o3-mini-high**, démontre comment créer un compilateur minimaliste pour un langage de programmation inspiré du grec ancien. Le compilateur traduit directement le code source en assembleur ARM64 pour Apple Silicon, sans passer par une traduction en C. Ce projet peut être étendu pour ajouter de nouvelles fonctionnalités et constructions de langage.
